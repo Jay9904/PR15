@@ -5,9 +5,135 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #FAF9F8;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.hamarabtnPrime {
+  outline: 0;
+  grid-gap: 8px;
+  align-items: center;
+  color: #202020;
+  background: #F6C90E;
+  border: 3px solid #3A4750;
+  /* border-radius: 4px; */
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 500;
+  gap: 8px;
+  justify-content: center;
+  line-height: 1.5;
+  overflow: hidden;
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transition: all .14s ease-out;
+  white-space: nowrap;
+}
+
+.hamarabtnPrime:hover {
+  box-shadow: 4px 4px 0 #3A4750;
+  transform: translate(-4px, -4px);
+}
+
+.hamarabtnPrime:focus-visible {
+  outline-offset: 1px;
+}
+
+.hamarabtnSecond {
+  outline: 0;
+  grid-gap: 8px;
+  align-items: center;
+  color: #F6C90E;
+  background: #3A4750;
+  border: 3px solid #F6C90E;
+  /* border-radius: 4px; */
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 500;
+  gap: 8px;
+  justify-content: center;
+  line-height: 1.5;
+  overflow: hidden;
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transition: all .14s ease-out;
+  white-space: nowrap;
+}
+
+.hamarabtnSecond:hover {
+  box-shadow: 4px 4px 0 #F6C90E;
+  transform: translate(-4px, -4px);
+}
+
+.hamarabtnSecond:focus-visible {
+  outline-offset: 1px;
+}
+
+.vh100 {
+  height: 100vh !important;
+}
+
+#icon {
+  color: #3A4750;
+  transition: all .14s ease-out;
+}
+
+#icon:hover {
+  color: #F6C90E;
+  transition: all .14s ease-out;
+  scale: 1.2;
+}
+
+#dashboardCard:hover {
+  box-shadow: 4px 4px 0 #3A4750;
+  transform: translate(-4px, -4px);
+}
+
+input:focus {
+  border: 3px solid #3A4750 !important;
+  box-shadow: 0px 4px 0 #3A4750 !important;
+  font-weight: 600;
+  transform: translate(0px, -4px);
+  transition: all .14s ease-out;
+}
+
+select:hover {
+  box-shadow: 0px 4px 0 #3A4750 !important;
+  font-weight: 600;
+  transition: all .14s ease-out;
+}
+
+.card {
+  transition: all 0.2s linear;
+}
+
+.card:hover {
+  /* scale: 1.1; */
+  box-shadow: 0px 5px 0 #3A4750 !important;
+  transform: translate(0px, -4px);
+  transition: all 0.2s linear;
+}
+
+.fs-6 {
+  font-size: 0.75rem !important;
+}
+
+/* 
+#menuList {
+  display: none;
+} */
+.dropdown-menu {
+  border: 2px solid black;
+  margin-left: 80px;
+  transition: all 1s linear;
 }

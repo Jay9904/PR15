@@ -1,0 +1,245 @@
+{
+  "restaurants": [
+    {
+      "id": "61ec",
+      "restaurantName": "TGB",
+      "restaurantAddress": "adajan,surat",
+      "ownerName": "rajesh",
+      "mobileNo": "445566",
+      "email": "rajesh@gmail.com",
+      "fssai": "dsdffdfsd",
+      "gstNo": "dsdsfsff",
+      "password": "rajesh123"
+    },
+    {
+      "id": "4b68",
+      "restaurantName": "Shree Kailash",
+      "restaurantAddress": "Parle point surat",
+      "ownerName": "jay",
+      "mobileNo": "4455664455",
+      "email": "jay@gmail.com",
+      "fssai": "hgfhgfhggh",
+      "gstNo": "gvhgghhg",
+      "password": "jay123"
+    },
+    {
+      "id": "5549",
+      "restaurantName": "Makhan bhog",
+      "restaurantAddress": "pal,surat",
+      "ownerName": "yogeshbhai",
+      "mobileNo": "545465465",
+      "email": "yogesh@gmail.com",
+      "fssai": "sddhsjfh",
+      "gstNo": "vhssbhjf",
+      "password": "yogesh123"
+    }
+  ],
+  "adminUser": [],
+  "restaurantMenu": [
+    {
+      "id": "78ec",
+      "category": "North Indian",
+      "itemName": "paneer tika",
+      "price": "249",
+      "resId": "4b68"
+    },
+    {
+      "id": "7bb7",
+      "category": "Meal",
+      "itemName": "thali",
+      "price": "249",
+      "resId": "4b68"
+    },
+    {
+      "id": "30c3",
+      "category": "Chinies",
+      "itemName": "manchurian",
+      "price": "100",
+      "resId": "4b68"
+    },
+    {
+      "id": "9244",
+      "category": "Desert",
+      "itemName": "gulab jamun",
+      "price": "100",
+      "resId": "5549"
+    },
+    {
+      "id": "816a",
+      "category": "Desert",
+      "itemName": "kaju Katri",
+      "price": "300",
+      "resId": "5549"
+    },
+    {
+      "id": "7969",
+      "category": "North Indian",
+      "itemName": "paneer tika",
+      "price": "200",
+      "resId": "61ec"
+    },
+    {
+      "id": "890e",
+      "category": "South Indian",
+      "itemName": "dosa",
+      "price": "80",
+      "resId": "61ec"
+    },
+    {
+      "id": "06bf",
+      "category": "salad",
+      "itemName": "onion",
+      "price": "50",
+      "resId": "61ec"
+    }
+  ],
+  "users": [
+    {
+      "id": "0685",
+      "name": "papu",
+      "address": {
+        "houseNo": "756",
+        "address": "GHb",
+        "type": "Home"
+      },
+      "mobileNo": "545456456",
+      "email": "papu@gmail.com",
+      "password": "papu123"
+    },
+    {
+      "id": "cd9a",
+      "name": "mehul",
+      "address": {
+        "houseNo": "15",
+        "address": "varsha Society",
+        "type": "Home"
+      },
+      "mobileNo": "9904069151",
+      "email": "mehul@gmail.com",
+      "password": "mehul123"
+    },
+    {
+      "id": "3118",
+      "name": "yash",
+      "address": "rander, surat",
+      "mobileNo": "5456456454",
+      "email": "yash@gmail.com",
+      "password": "yash123"
+    },
+    {
+      "id": "a384",
+      "name": "ramesh",
+      "address": {
+        "houseNo": "25",
+        "address": "sandhya vandan",
+        "type": "Home"
+      },
+      "mobileNo": "5644544",
+      "email": "ramesh@gmail.com",
+      "password": "ramesh123"
+    }
+  ],
+  "clintUser": [
+    {
+      "id": "226d",
+      "name": "raju",
+      "address": "adajan,surat",
+      "mobileNo": "5464654654",
+      "email": "raju@gmail.com",
+      "password": "raju123"
+    },
+    {
+      "id": "226d",
+      "name": "raju",
+      "address": "adajan,surat",
+      "mobileNo": "5464654654",
+      "email": "raju@gmail.com",
+      "password": "raju123"
+    }
+  ],
+  "cuurentUser": [
+    {
+      "id": "a384",
+      "name": "ramesh",
+      "address": {
+        "houseNo": "25",
+        "address": "sandhya vandan",
+        "type": "Home"
+      },
+      "mobileNo": "5644544",
+      "email": "ramesh@gmail.com",
+      "password": "ramesh123"
+    }
+  ],
+  "cart": [
+    {
+      "id": "9d4a",
+      "item": {
+        "id": "78ec",
+        "category": "North Indian",
+        "itemName": "paneer tika",
+        "price": "249",
+        "resId": "4b68"
+      },
+      "userId": "a384"
+    },
+    {
+      "id": "e350",
+      "item": {
+        "id": "78ec",
+        "category": "North Indian",
+        "itemName": "paneer tika",
+        "price": "249",
+        "resId": "4b68"
+      },
+      "userId": "a384"
+    },
+    {
+      "id": "0996",
+      "item": {
+        "id": "7bb7",
+        "category": "Meal",
+        "itemName": "thali",
+        "price": "249",
+        "resId": "4b68"
+      },
+      "userId": "a384"
+    },
+    {
+      "id": "3a87",
+      "item": {
+        "id": "78ec",
+        "category": "North Indian",
+        "itemName": "paneer tika",
+        "price": "249",
+        "resId": "4b68"
+      },
+      "userId": "a384"
+    },
+    {
+      "id": "fccc",
+      "item": {
+        "id": "78ec",
+        "category": "North Indian",
+        "itemName": "paneer tika",
+        "price": "249",
+        "resId": "4b68"
+      },
+      "userId": "a384"
+    }
+  ],
+  "totalGetOrders": [
+    {
+      "id": "5fb3",
+      "cartItems": [],
+      "userAddress": {
+        "houseNo": "25",
+        "address": "sandhya vandan",
+        "type": "Home"
+      },
+      "date": "21 / 1 / 2024",
+      "time": "17 : 37 : 21",
+      "status": "active"
+    }
+  ]
+}
