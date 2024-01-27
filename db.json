@@ -157,88 +157,66 @@
       "password": "raju123"
     }
   ],
-  "cuurentUser": [
-    {
-      "id": "a384",
-      "name": "ramesh",
-      "address": {
-        "houseNo": "25",
-        "address": "sandhya vandan",
-        "type": "Home"
-      },
-      "mobileNo": "5644544",
-      "email": "ramesh@gmail.com",
-      "password": "ramesh123"
-    }
-  ],
-  "cart": [
-    {
-      "id": "9d4a",
-      "item": {
-        "id": "78ec",
-        "category": "North Indian",
-        "itemName": "paneer tika",
-        "price": "249",
-        "resId": "4b68"
-      },
-      "userId": "a384"
-    },
-    {
-      "id": "e350",
-      "item": {
-        "id": "78ec",
-        "category": "North Indian",
-        "itemName": "paneer tika",
-        "price": "249",
-        "resId": "4b68"
-      },
-      "userId": "a384"
-    },
-    {
-      "id": "0996",
-      "item": {
-        "id": "7bb7",
-        "category": "Meal",
-        "itemName": "thali",
-        "price": "249",
-        "resId": "4b68"
-      },
-      "userId": "a384"
-    },
-    {
-      "id": "3a87",
-      "item": {
-        "id": "78ec",
-        "category": "North Indian",
-        "itemName": "paneer tika",
-        "price": "249",
-        "resId": "4b68"
-      },
-      "userId": "a384"
-    },
-    {
-      "id": "fccc",
-      "item": {
-        "id": "78ec",
-        "category": "North Indian",
-        "itemName": "paneer tika",
-        "price": "249",
-        "resId": "4b68"
-      },
-      "userId": "a384"
-    }
-  ],
+  "cuurentUser": [],
+  "cart": [],
   "totalGetOrders": [
     {
-      "id": "5fb3",
-      "cartItems": [],
+      "id": "f87c",
+      "cartItems": [
+        {
+          "id": "989e",
+          "item": {
+            "id": "7969",
+            "category": "North Indian",
+            "itemName": "paneer tika",
+            "price": "200",
+            "resId": "61ec"
+          },
+          "userId": "a384"
+        },
+        {
+          "id": "5ee1",
+          "item": {
+            "id": "890e",
+            "category": "South Indian",
+            "itemName": "dosa",
+            "price": "80",
+            "resId": "61ec"
+          },
+          "userId": "a384"
+        }
+      ],
       "userAddress": {
         "houseNo": "25",
         "address": "sandhya vandan",
         "type": "Home"
       },
-      "date": "21 / 1 / 2024",
-      "time": "17 : 37 : 21",
+      "date": "27 / 1 / 2024",
+      "time": "20 : 27 : 27",
+      "status": "active"
+    },
+    {
+      "id": "06d3",
+      "cartItems": [
+        {
+          "id": "a5bb",
+          "item": {
+            "id": "78ec",
+            "category": "North Indian",
+            "itemName": "paneer tika",
+            "price": "249",
+            "resId": "4b68"
+          },
+          "userId": "a384"
+        }
+      ],
+      "userAddress": {
+        "houseNo": "25",
+        "address": "sandhya vandan",
+        "type": "Home"
+      },
+      "date": "27 / 1 / 2024",
+      "time": "20 : 27 : 45",
       "status": "active"
     }
   ]

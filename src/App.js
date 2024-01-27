@@ -22,31 +22,56 @@ function App() {
   const adminUser = useSelector((state) => state.adminUser);
 
   useEffect(() => {
-    fetch('http://localhost:8000/adminUser')
-      .then((response) => response.json())
-      .then((json) => dispatch({
-        type: "addUserAdmin",
-        payload: json
-      }));
-    fetch('http://localhost:8000/cuurentUser')
-      .then((response) => response.json())
-      .then((json) => dispatch({
-        type: "UPDATEUSER",
-        payload: json
-      }));
-  }, [])
+    const fetchAdminUser = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/adminUser');
+        const json = await response.json();
+        dispatch({
+          type: "addUserAdmin",
+          payload: json
+        });
+      } catch (error) {
+        console.error('Error fetching admin user:', error);
+      }
+    };
+
+    const fetchCurrentUser = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/cuurentUser');
+        const json = await response.json();
+        dispatch({
+          type: "UPDATEUSER",
+          payload: json
+        });
+      } catch (error) {
+        console.error('Error fetching current user:', error);
+      }
+    };
+
+    fetchAdminUser();
+    fetchCurrentUser();
+  }, []);
 
   useEffect(() => {
-    fetch('http://localhost:8000/cuurentUser')
-      .then((response) => response.json)
-      .then((json) => console.log(json));
-  }, [])
+    const fetchCurrentUserAndLog = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/cuurentUser');
+        const json = await response.json();
+        console.log(json);
+      } catch (error) {
+        console.error('Error fetching current user:', error);
+      }
+    };
+
+    fetchCurrentUserAndLog();
+  }, []);
+
 
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Restaurant />} />
+          <Route path='/' element={<UserLogin />} />
           <Route path='/signup' element={<Registration />} />
           <Route path='/login' element={<Login />} />
           <Route path='/userlogin' element={<UserLogin />} />

@@ -100,35 +100,55 @@ export default function Cart() {
     return `${hours} : ${minutes} : ${seconds}`;
   }
 
-  const handleOrder = () => {
-    if (cartItems.length === 0) {
+  const handleOrder = async () => {
+    try {
+      if (cartItems.length === 0) {
+        Swal.fire({
+          icon: "error",
+          title: "Cart is Empty!!!"
+        });
+      } else {
+        let date = getDate();
+        let time = getTime();
+
+        const orderResponse = await fetch('http://localhost:8000/totalGetOrders', {
+          method: 'POST',
+          body: JSON.stringify({ cartItems, userAddress, date, time, status: "active" }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        });
+
+        if (orderResponse.ok) {
+          await Swal.fire({
+            icon: "success",
+            title: 'Your Order Placed Successfully'
+          });
+
+          // Delete items from cart after placing the order
+          await Promise.all(cartItems.map(async (item) => {
+            await fetch(`http://localhost:8000/cart/${item.id}`, {
+              method: 'DELETE',
+            });
+          }));
+
+          // Navigate to orderlist
+          navigate('/orderlist');
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: 'Failed to place the order. Please try again.'
+          });
+        }
+      }
+    } catch (error) {
+      console.error('Error handling order:', error);
       Swal.fire({
         icon: "error",
-        title: "Cart is Empty!!!"
+        title: 'Failed to place the order. Please try again.'
       });
-    } else {
-      let date = getDate();
-      let time = getTime()
-      fetch('http://localhost:8000/totalGetOrders', {
-        method: 'POST',
-        body: JSON.stringify({ cartItems, userAddress, date: date, time: time, status: "active" }),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      }).then(
-        Swal.fire({
-          icon: "success",
-          title: 'Your Order Place Successfully'
-        })
-      );
-      cartItems.map((item) => {
-        fetch(`http://localhost:8000/cart/${item.id}`, {
-          method: 'DELETE',
-        });
-      })
-      navigate('/orderlist');
     }
-  }
+  };
 
   return (
     <>

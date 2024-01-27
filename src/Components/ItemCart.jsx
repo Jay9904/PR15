@@ -8,18 +8,9 @@ export default function ItemCart({ item, updateTotalAmount, setGst }) {
     const [itemCount, setItemCount] = useState(1);
     const [price, setPrice] = useState(parseInt(item.item.price));
     const [totalAmount, setTotalAmount] = useState(parseInt(item.item.price));
-    // const [data, setData] = useState([]);
-
-    // useEffect(() => {
-    //     if (item && Array.isArray(item)) {
-    //         // Update the state with the objects from props
-    //         setData(item);
-    //     }
-    //     console.log(data);
-    // }, [])
 
     useEffect(() => {
-        // console.log(data)
+        // console.log(itemCount)
         const newTotalAmount = parseInt(item.item.price) * itemCount;
         setTotalAmount(newTotalAmount);
         updateTotalAmount(newTotalAmount);
@@ -39,30 +30,47 @@ export default function ItemCart({ item, updateTotalAmount, setGst }) {
         }
     }
 
-    const handleRemove = () => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this item!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
+    const handleRemove = async () => {
+        try {
+            const result = await Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this item!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            });
+
             if (result.isConfirmed) {
-                let id = item.id;
-                fetch(`http://localhost:8000/cart/${id}`, {
+                const id = item.id;
+                const response = await fetch(`http://localhost:8000/cart/${id}`, {
                     method: 'DELETE',
-                }).then(
-                    Swal.fire({
+                });
+                if (response.ok) {
+                    await Swal.fire({
                         title: "Deleted!",
                         text: "Your file has been deleted.",
                         icon: "success"
-                    })
-                )
+                    });
+                } else {
+                    await Swal.fire({
+                        title: "Error",
+                        text: "Failed to delete the item. Please try again.",
+                        icon: "error"
+                    });
+                }
             }
-        });
-    }
+        } catch (error) {
+            console.error("Error deleting item:", error);
+            Swal.fire({
+                title: "Error",
+                text: "Failed to delete the item. Please try again.",
+                icon: "error"
+            });
+        }
+    };
+
 
     return (
         <div className='border border-dark p-2'>

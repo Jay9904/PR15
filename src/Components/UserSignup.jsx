@@ -14,38 +14,53 @@ export default function UserSignup() {
     const db = database;
     const dispatch = useDispatch();
     const users = useSelector((state) => state.users)
-    // console.log(users)
 
     const handleInput = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value })
     }
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (validation()) {
             let emailVerification = users.filter((item) => item.email === input.email);
-            if (emailVerification) {
+
+            if (emailVerification.length > 0) {
                 Swal.fire({
-                    title: "Email Alredy Registered"
-                })
+                    title: "Email Already Registered"
+                });
             } else {
-                fetch('http://localhost:8000/users', {
-                    method: 'POST',
-                    body: JSON.stringify(input),
-                    headers: {
-                        'Content-type': 'application/json; charset=UTF-8',
-                    },
-                })
-                Swal.fire({
-                    icon: "success",
-                    title: "Registeration Successfully Done"
-                })
-                navigate('/userlogin')
+                try {
+                    const response = await fetch('http://localhost:8000/users', {
+                        method: 'POST',
+                        body: JSON.stringify(input),
+                        headers: {
+                            'Content-type': 'application/json; charset=UTF-8',
+                        },
+                    });
+
+                    if (response.ok) {
+                        await Swal.fire({
+                            icon: "success",
+                            title: "Registration Successfully Done"
+                        });
+                        navigate('/userlogin');
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Registration Failed"
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error during registration:', error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Registration Failed"
+                    });
+                }
             }
         }
-    }
-
-
+    };
 
 
     const validation = () => {
@@ -77,6 +92,7 @@ export default function UserSignup() {
 
     return (
         <div className="vh100 align-items-center row justify-content-center p-0 m-0">
+            <h3 className='text-center fw-bolder'>Just Giving You A <span className='text-warning'>STAR ⭐</span> For not wasting food. thank You!😊</h3>
             <div className='col-6'>
                 <img src="/main.jpg" alt="" className='img-fluid' />
             </div>

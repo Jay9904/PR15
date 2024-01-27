@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import Swal from 'sweetalert2';
 
-
 export default function OrderLsit() {
     const [orderData, setOrderData] = useState();
 
@@ -10,36 +9,52 @@ export default function OrderLsit() {
         fetchData();
     }, []);
 
-    const fetchData = () => {
-        fetch('http://localhost:8000/totalGetOrders')
-            .then((response) => response.json())
-            .then((json) => setOrderData(json));
-    }
+    const fetchData = async () => {
+        try {
+            const response = await fetch('http://localhost:8000/totalGetOrders');
+            const json = await response.json();
+            setOrderData(json);
+        } catch (error) {
+            console.error('Error fetching order data:', error);
+        }
+    };
 
-    const handleDelete = (item) => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this item!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
+    const handleDelete = async (item) => {
+        try {
+            const result = await Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this item!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            });
+
             if (result.isConfirmed) {
-                let id = item.id;
-                fetch(`http://localhost:8000/totalGetOrders/${id}`, {
+                const id = item.id;
+
+                await fetch(`http://localhost:8000/totalGetOrders/${id}`, {
                     method: 'DELETE',
-                }).then(
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success"
-                    })
-                ).then(fetchData());
+                });
+
+                await Swal.fire({
+                    title: 'Deleted!',
+                    text: 'Your file has been deleted.',
+                    icon: 'success'
+                });
+
+                fetchData(); // Refresh data after deletion
             }
-        });
-    }
+        } catch (error) {
+            console.error('Error deleting order:', error);
+            Swal.fire({
+                title: 'Error',
+                text: 'Failed to delete the order. Please try again.',
+                icon: 'error'
+            });
+        }
+    };
 
     return (
         <>

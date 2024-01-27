@@ -17,41 +17,62 @@ export default function Userlogin() {
     }
 
     useEffect(() => {
-        fetch('http://localhost:8000/users')
-            .then((response) => response.json())
-            .then((json) => dispatch({
-                type: "UserList",
-                payload: json
-            }));
-    }, [])
+        const fetchData = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/users');
+                const json = await response.json();
+                dispatch({
+                    type: "UserList",
+                    payload: json,
+                });
+            } catch (error) {
+                console.error('Error fetching users:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (validation()) {
             const loginUser = users.filter((item) => item.email === input.email && item.password === input.password);
+
             if (loginUser.length === 1) {
-                fetch('http://localhost:8000/cuurentUser', {
-                    method: 'POST',
-                    body: JSON.stringify(...loginUser),
-                    headers: {
-                        'Content-type': 'application/json; charset=UTF-8',
-                    },
-                }).then(
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Log In Successfully'
-                    })
-                ).then(
-                    navigate('/')
-                )
+                try {
+                    const response = await fetch('http://localhost:8000/currentUser', {
+                        method: 'POST',
+                        body: JSON.stringify(...loginUser),
+                        headers: {
+                            'Content-type': 'application/json; charset=UTF-8',
+                        },
+                    });
+
+                    if (response.ok) {
+                        await Swal.fire({
+                            icon: 'success',
+                            title: 'Log In Successfully'
+                        });
+                        navigate('/');
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Failed to Log In'
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
             } else {
                 Swal.fire({
                     icon: 'error',
                     title: 'Wrong Id and Password'
-                })
+                });
             }
         }
-    }
+    };
+
 
     const validation = () => {
         const newError = {};
@@ -70,6 +91,7 @@ export default function Userlogin() {
 
     return (
         <div className="vh100 align-items-center row justify-content-center p-0 m-0">
+            <h3 className='text-center fw-bolder'>Just Giving You A <span className='text-warning'>STAR ⭐</span> For not wasting food. thank You!😊</h3>
             <div className='col-6'>
                 <img src="/main.jpg" alt="" className='img-fluid' />
             </div>

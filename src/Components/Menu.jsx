@@ -27,18 +27,25 @@ export default function Menu() {
         fetchData();
     }, [])
 
-    const fetchCart = () => {
-        fetch(`http://localhost:8000/cart`)
-            .then((response) => response.json())
-            .then((json) => setCart(json));
-        console.log(cart);
-    }
+    const fetchCart = async () => {
+        try {
+            const response = await fetch(`http://localhost:8000/cart`);
+            const json = await response.json();
+            setCart(json);
+        } catch (error) {
+            console.error('Error fetching cart:', error);
+        }
+    };
 
-    const fetchMenu = () => {
-        fetch(`http://localhost:8000/restaurantMenu?resId=${id.id}`)
-            .then((response) => response.json())
-            .then((json) => setResMenu(json));
-    }
+    const fetchMenu = async () => {
+        try {
+            const response = await fetch(`http://localhost:8000/restaurantMenu?resId=${id.id}`);
+            const json = await response.json();
+            setResMenu(json);
+        } catch (error) {
+            console.error('Error fetching menu:', error);
+        }
+    };
 
 
     const filterCart = () => {
@@ -58,80 +65,49 @@ export default function Menu() {
         alert(url + ' Url Copy Successfully')
     }
 
-    // const addToCart = (item) => {
-    //     const userId = clintUser[0].id;
-    //     const data = { item, userId };
-    //     let resId = cart && cart.some((item) => item.item.resId === data.item.resId);
-    //     if (!resId || !cart.some((item) => item.item.resId === item.item.resId)) {
-    //         let id = alredyinCart && alredyinCart.some((item) => item === data.item.id);
-    //         if (id.length === 0) {
-    //             fetch('http://localhost:8000/cart', {
-    //                 method: 'POST',
-    //                 body: JSON.stringify(data),
-    //                 headers: {
-    //                     'Content-type': 'application/json; charset=UTF-8',
-    //                 },
-    //             }).then(() => {
-    //                 Swal.fire({
-    //                     icon: 'success',
-    //                     title: "Item in your cart"
-    //                 });
-    //                 fetchCart();
-    //             })
-    //                 .catch((error) => {
-    //                     console.log(error)
-    //                 })
-    //         } else {
-    //             Swal.fire({
-    //                 icon: "warning",
-    //                 title: "Item Alredy in cart"
-    //             })
-    //         }
-    //     } else {
-    //         Swal.fire({
-    //             icon: "warning",
-    //             title: "You can't order with two resturants one time"
-    //         })
-    //     }
-    // }
+    const addToCart = async (item) => {
+        try {
+            const userId = clintUser[0].id;
+            const data = { item, userId };
+            let resId = cart && cart.some((item) => item.item.resId === data.item.resId);
 
-    const addToCart = (item) => {
-        const userId = clintUser[0].id;
-        const data = { item, userId };
-        let resId = cart && cart.filter((item) => item.item.resId === data.item.resId);
-        if (!resId) {
-            Swal.fire({
-                icon: "warning",
-                title: "You can't order from two restaurants at the same time"
-            });
-        } else {
-            let id = alredyinCart && alredyinCart.filter((item) => item === data.item.id);
-            if (!id) {
-                fetch('http://localhost:8000/cart', {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-type': 'application/json; charset=UTF-8',
-                    },
-                }).then(() => {
+            if (resId === true || cart.length === 0) {
+                let id = cart && cart.some((item) => item.item.id === data.item.id);
+                console.log(true);
+                if (id === true) {
                     Swal.fire({
-                        icon: 'success',
-                        title: "Item in your cart"
+                        icon: "warning",
+                        title: "Item Already in cart"
                     });
-                    fetchCart();
-                }).catch((error) => {
-                    console.log(error);
-                });
+                } else {
+                    const response = await fetch('http://localhost:8000/cart', {
+                        method: 'POST',
+                        body: JSON.stringify(data),
+                        headers: {
+                            'Content-type': 'application/json; charset=UTF-8',
+                        },
+                    });
+
+                    if (response.ok) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: "Item in your cart"
+                        });
+                        await fetchCart();
+                    } else {
+                        console.error(`Error: ${response.statusText}`);
+                    }
+                }
             } else {
                 Swal.fire({
                     icon: "warning",
-                    title: "Item already in cart"
+                    title: "You can't order with two restaurants at the same time"
                 });
             }
+        } catch (error) {
+            console.error(error);
         }
-    }
-
-
+    };
 
     return (
         <>
