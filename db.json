@@ -165,7 +165,16 @@
       "password": "raju123"
     }
   ],
-  "cuurentUser": [],
+  "cuurentUser": [
+    {
+      "id": "5b77",
+      "name": "shyam",
+      "address": "Surat",
+      "mobileNo": "545435435",
+      "email": "shyam@gmail.com",
+      "password": "shyam123"
+    }
+  ],
   "cart": [],
   "totalGetOrders": [
     {
@@ -225,6 +234,30 @@
       },
       "date": "27 / 1 / 2024",
       "time": "20 : 27 : 45",
+      "status": "active"
+    },
+    {
+      "id": "6fe1",
+      "cartItems": [
+        {
+          "id": "9192",
+          "item": {
+            "id": "816a",
+            "category": "Desert",
+            "itemName": "kaju Katri",
+            "price": "300",
+            "resId": "5549"
+          },
+          "userId": "a384"
+        }
+      ],
+      "userAddress": {
+        "houseNo": "25",
+        "address": "sandhya vandan",
+        "type": "Home"
+      },
+      "date": "29 / 1 / 2024",
+      "time": "11 : 35 : 11",
       "status": "active"
     }
   ]

@@ -44,7 +44,7 @@ export default function Header() {
                     <div className="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
                         <div className='col-3 text-center'>
                             {/* <marquee direction="left" behavior="scroll" className=''> */}
-                            <Link to={'/'}><img src="/logo.jpg" alt="" className='img-fluid w-25' /></Link>
+                            <Link to={'/restaurant'}><img src="/logo.jpg" alt="" className='img-fluid w-25' /></Link>
                             {/* </marquee> */}
                         </div>
                         <div className='col-6'>

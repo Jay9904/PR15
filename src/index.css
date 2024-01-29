@@ -137,7 +137,7 @@ select:hover {
   margin-left: 80px;
   transition: all 1s linear;
 }
-
+/* 
 svg {
   font-family: 'Russo One', sans-serif;
   position: absolute;
@@ -151,7 +151,7 @@ svg text {
   stroke-width: 2;
   stroke: #365fa0;
   font-size: 140px;
-}
+} */
 
 @keyframes stroke {
   0% {
