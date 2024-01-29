@@ -41,20 +41,19 @@ export default function Userlogin() {
 
             if (loginUser.length === 1) {
                 try {
-                    const response = await fetch('http://localhost:8000/currentUser', {
+                    const response = await fetch('http://localhost:8000/cuurentUser', {
                         method: 'POST',
                         body: JSON.stringify(...loginUser),
                         headers: {
                             'Content-type': 'application/json; charset=UTF-8',
                         },
                     });
-
                     if (response.ok) {
                         await Swal.fire({
                             icon: 'success',
                             title: 'Log In Successfully'
                         });
-                        navigate('/');
+                        navigate('/restaurant');
                     } else {
                         Swal.fire({
                             icon: 'error',
@@ -91,7 +90,14 @@ export default function Userlogin() {
 
     return (
         <div className="vh100 align-items-center row justify-content-center p-0 m-0">
-            <h3 className='text-center fw-bolder'>Just Giving You A <span className='text-warning'>STAR ⭐</span> For not wasting food. thank You!😊</h3>
+            {/* <svg viewBox="0 0 1320 300">
+                <text x="50%" y="50%" dy=".35em" text-anchor="middle">
+                    FOOD...
+                </text>
+            </svg> */}
+            <div>
+                <h4 className='text-center fw-semibold'>Just Giving You A <span className='text-warning bg-dark px-3 py-1 border-bottom border-warning border-4 fs-4'>Star ⭐</span> For not wasting food. thank You!😊</h4>
+            </div>
             <div className='col-6'>
                 <img src="/main.jpg" alt="" className='img-fluid' />
             </div>

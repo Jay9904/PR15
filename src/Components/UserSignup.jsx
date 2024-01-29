@@ -92,7 +92,7 @@ export default function UserSignup() {
 
     return (
         <div className="vh100 align-items-center row justify-content-center p-0 m-0">
-            <h3 className='text-center fw-bolder'>Just Giving You A <span className='text-warning'>STAR ⭐</span> For not wasting food. thank You!😊</h3>
+            <h4 className='text-center fw-semibold'>Just Giving You A <span className='text-warning bg-dark px-3 py-1 border-bottom border-warning border-4 fs-5'>Star ⭐</span> For not wasting food. thank You!😊</h4>
             <div className='col-6'>
                 <img src="/main.jpg" alt="" className='img-fluid' />
             </div>

@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Gaegu:wght@300;400;700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "DM Serif Display", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #FAF9F8;
@@ -136,4 +136,48 @@ select:hover {
   border: 2px solid black;
   margin-left: 80px;
   transition: all 1s linear;
+}
+
+svg {
+  font-family: 'Russo One', sans-serif;
+  position: absolute;
+  width: 25%;
+  height: 25%;
+}
+
+svg text {
+  text-transform: uppercase;
+  animation: stroke 5s infinite alternate;
+  stroke-width: 2;
+  stroke: #365fa0;
+  font-size: 140px;
+}
+
+@keyframes stroke {
+  0% {
+    fill: rgba(72, 138, 20, 0);
+    stroke: rgba(54, 95, 160, 1);
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 50%;
+    stroke-width: 2;
+  }
+
+  70% {
+    fill: rgba(72, 138, 20, 0);
+    stroke: rgba(54, 95, 160, 1);
+  }
+
+  80% {
+    fill: rgba(72, 138, 20, 0);
+    stroke: rgba(54, 95, 160, 1);
+    stroke-width: 3;
+  }
+
+  100% {
+    fill: rgba(72, 138, 204, 1);
+    stroke: rgba(54, 95, 160, 0);
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 50% 0;
+    stroke-width: 0;
+  }
 }

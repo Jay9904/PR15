@@ -137,6 +137,14 @@
       "mobileNo": "5644544",
       "email": "ramesh@gmail.com",
       "password": "ramesh123"
+    },
+    {
+      "id": "5b77",
+      "name": "shyam",
+      "address": "Surat",
+      "mobileNo": "545435435",
+      "email": "shyam@gmail.com",
+      "password": "shyam123"
     }
   ],
   "clintUser": [
