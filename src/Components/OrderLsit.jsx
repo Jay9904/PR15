@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import Swal from 'sweetalert2';
+import { useSelector } from 'react-redux';
 
 export default function OrderLsit() {
     const [orderData, setOrderData] = useState();
+    const currentUser = useSelector((state) => state.currentUser);
 
     useEffect(() => {
         fetchData();
@@ -11,14 +13,21 @@ export default function OrderLsit() {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:8000/totalGetOrders');
+            let data = currentUser[0];
+            let id = data.id;
+            const response = await fetch(`http://localhost:8000/totalGetOrders`);
             const json = await response.json();
-            setOrderData(json);
+            // console.log(json)
+            const matchData = json.filter((item) => item.cartItems.filter((item) => item === id));
+            // setOrderData({
+            //     totalGetOrders: matchData
+            // });
         } catch (error) {
             console.error('Error fetching order data:', error);
         }
     };
 
+    console.log(orderData);
     const handleDelete = async (item) => {
         try {
             const result = await Swal.fire({

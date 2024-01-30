@@ -167,12 +167,16 @@
   ],
   "cuurentUser": [
     {
-      "id": "5b77",
-      "name": "shyam",
-      "address": "Surat",
-      "mobileNo": "545435435",
-      "email": "shyam@gmail.com",
-      "password": "shyam123"
+      "id": "0685",
+      "name": "papu",
+      "address": {
+        "houseNo": "756",
+        "address": "GHb",
+        "type": "Home"
+      },
+      "mobileNo": "545456456",
+      "email": "papu@gmail.com",
+      "password": "papu123"
     }
   ],
   "cart": [],
